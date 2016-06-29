@@ -1,23 +1,19 @@
 package com.rac.simoneunddaniel.mensa.WeekSelection;
 
-import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Daniel on 16.06.2016.
  */
 public class DateHelper {
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+    private String dateFormat = "dd.MM.yyyy";
 
     public ArrayList<String> getWeeksOfYear() {
 
@@ -36,6 +32,7 @@ public class DateHelper {
 
         //Stringbuilder for concatination
         StringBuilder builder = new StringBuilder();
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 
         for (int i = weekofyear; i <= currentWeekOfYear; i++) {
             //get start and end date of the week
@@ -91,7 +88,6 @@ public class DateHelper {
 
         LocalDate dt = new LocalDate(Integer.parseInt(dateElements[2]), Integer.parseInt(dateElements[1]), Integer.parseInt(dateElements[0]));
 
-        String dateFormat = "dd.MM.yyyy";
 
         days[0] = "Montag, " + dt.withDayOfWeek(DateTimeConstants.MONDAY).toString(dateFormat);
         days[1] = "Dienstag, " + dt.withDayOfWeek(DateTimeConstants.TUESDAY).toString(dateFormat);
@@ -105,7 +101,7 @@ public class DateHelper {
     public String getCurrentDate() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0);
-        String currentDate = sdf.format(cal.getTime());
-        return currentDate;
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        return sdf.format(cal.getTime());
     }
 }

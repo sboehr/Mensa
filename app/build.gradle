@@ -19,6 +19,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "http://dl.bintray.com/glomadrian/maven"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -27,5 +33,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile group: 'joda-time', name: 'joda-time', version: '2.3'
-
+    compile 'com.github.glomadrian:roadrunner:1.0@aar'
 }

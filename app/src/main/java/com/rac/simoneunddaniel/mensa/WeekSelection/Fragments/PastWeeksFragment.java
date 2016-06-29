@@ -1,8 +1,6 @@
 package com.rac.simoneunddaniel.mensa.WeekSelection.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.rac.simoneunddaniel.mensa.R;
 import com.rac.simoneunddaniel.mensa.WeekSelection.DateHelper;
@@ -27,7 +24,7 @@ public class PastWeeksFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_past_weeks,
                 container, false);
 
-         listView = (ListView) view.findViewById(R.id.pastweekslist);
+        listView = (ListView) view.findViewById(R.id.pastweekslist);
 
         DateHelper dateHelper = new DateHelper();
 
@@ -48,14 +45,14 @@ public class PastWeeksFragment extends Fragment {
                                     int position, long id) {
 
                 // ListView Clicked item value
-                String  itemValue    = (String) listView.getItemAtPosition(position);
+                String itemValue = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Position :"+ position +"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show();
+//                Toast.makeText(getActivity().getApplicationContext(),
+//                        "Position :"+ position +"  ListItem : " +itemValue , Toast.LENGTH_LONG)
+//                        .show();
 
-                Intent intent = new Intent(getContext(),DayOfWeekSelectionActivity.class);
+                Intent intent = new Intent(getContext(), DayOfWeekSelectionActivity.class);
                 intent.putExtra("date", itemValue);
                 getActivity().startActivity(intent);
             }

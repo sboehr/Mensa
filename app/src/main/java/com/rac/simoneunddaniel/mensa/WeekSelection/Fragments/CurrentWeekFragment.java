@@ -1,21 +1,18 @@
 package com.rac.simoneunddaniel.mensa.WeekSelection.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.rac.simoneunddaniel.mensa.MenueSelection.MenueSelectionActivity;
 import com.rac.simoneunddaniel.mensa.R;
 import com.rac.simoneunddaniel.mensa.WeekSelection.DateHelper;
 
@@ -43,7 +40,6 @@ public class CurrentWeekFragment extends android.support.v4.app.Fragment {
         } else {
             String dateInterval[] = date.split(" - ");
             date = dateInterval[0];
-            System.out.println(date);
             values = dateHelper.getDaysOfWeek(date);
         }
 
@@ -59,13 +55,17 @@ public class CurrentWeekFragment extends android.support.v4.app.Fragment {
 
                 //get Toolbar height
                 int toolbarheight = 0;
-                ActionBar bar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-                if (bar != null) {
-                    toolbarheight = bar.getHeight();
+
+                if (!getActivity().toString().contains("DayOfWeekSelectionActivity")) {
+
+                    ActionBar bar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+                    if (bar != null) {
+                        toolbarheight = bar.getHeight();
+                    }
                 }
 
                 // Set the height of the Item View
-                params.height = (listView.getHeight() - toolbarheight) / 5;
+                params.height = (listView.getHeight() - 20 - toolbarheight) / 5;
                 view.setLayoutParams(params);
 
                 return view;
@@ -85,9 +85,16 @@ public class CurrentWeekFragment extends android.support.v4.app.Fragment {
                 String itemValue = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+//                Toast.makeText(getActivity().getApplicationContext(),
+//                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+//                        .show();
+
+                String dateInterval[] = itemValue.split(" - ");
+                String date = dateInterval[0];
+
+                Intent intent = new Intent(getActivity(), MenueSelectionActivity.class);
+                intent.putExtra("date", date);
+                startActivity(intent);
             }
         });
 
