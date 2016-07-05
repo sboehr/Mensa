@@ -58,6 +58,7 @@ public class CurrentWeekFragment extends android.support.v4.app.Fragment {
 
                 if (!getActivity().toString().contains("DayOfWeekSelectionActivity")) {
 
+                    View parentView = (View) parent.getParent().getParent();
                     ActionBar bar = ((AppCompatActivity) getActivity()).getSupportActionBar();
                     if (bar != null) {
                         toolbarheight = bar.getHeight();
@@ -83,11 +84,6 @@ public class CurrentWeekFragment extends android.support.v4.app.Fragment {
                                     int position, long id) {
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
-
-                // Show Alert
-//                Toast.makeText(getActivity().getApplicationContext(),
-//                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-//                        .show();
 
                 String dateInterval[] = itemValue.split(" - ");
                 String date = dateInterval[0];

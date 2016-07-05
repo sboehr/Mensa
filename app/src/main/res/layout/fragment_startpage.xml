@@ -1,0 +1,57 @@
+<!-- fragment_screen_slide_page.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    xmlns:lib="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mensa Essen"
+            android:id="@+id/textView"
+            android:textColor="@color/colorAccent"
+            android:textSize="40dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="100dp"
+            android:layout_marginBottom="350dp" />
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/shimmer_tv"
+            android:text="jetzt bewerten!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent2"
+            android:textSize="30sp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="50dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="89dp"
+        android:layout_height="89dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/burger"
+        android:layout_gravity="center" />
+
+    <com.github.glomadrian.roadrunner.IndeterminateRoadRunner
+        android:id="@+id/spinner"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        lib:movement_direction="clockwise"
+        lib:movement_loop_time="1000"
+        lib:path_color="@color/colorAccent"
+        lib:stroke_width="3sp"
+        lib:path_data="@string/burger"
+        lib:path_original_width="@integer/burger_width"
+        lib:path_original_height="@integer/burger_height"
+        lib:path_animation_type="material"
+        android:layout_gravity="center" />
+</FrameLayout>

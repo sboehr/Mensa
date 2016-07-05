@@ -1,53 +1,55 @@
-package com.rac.simoneunddaniel.mensa.WeekSelection;
+package com.rac.simoneunddaniel.mensa.WeekSelection.Fragments;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 
 import com.rac.simoneunddaniel.mensa.R;
-import com.rac.simoneunddaniel.mensa.WeekSelection.Fragments.CurrentWeekFragment;
-import com.rac.simoneunddaniel.mensa.WeekSelection.Fragments.PastWeeksFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeekSelectionActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
+public class WeekSelectionFragment extends android.support.v4.app.Fragment {
     private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_week_selection);
-
-        //Setup Toolbar
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            toolbar.setTitle("Weekselection");
-        }
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_week_selection,
+                container, false);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         if (tabLayout != null) {
             tabLayout.setupWithViewPager(viewPager);
         }
+
+        //Setup Toolbar
+        toolbar = (android.support.v7.widget.Toolbar) view.findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setTitle("Weekselection");
+        }
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        return view;
     }
+
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PastWeeksFragment(), "Past Weeks");
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new CurrentWeekFragment(), "Current Week");
+        adapter.addFragment(new PastWeeksFragment(), "Past Weeks");
         viewPager.setAdapter(adapter);
     }
 

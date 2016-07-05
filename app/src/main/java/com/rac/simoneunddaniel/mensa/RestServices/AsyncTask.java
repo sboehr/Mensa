@@ -10,7 +10,9 @@ import java.net.URL;
  */
 public class AsyncTask extends android.os.AsyncTask<String, Void, String> {
 
-    public static String ip = "192.168.0.236";
+    public static String ip = "10.0.2.2";
+//    public static String ip = "192.168.2.108";
+//    public static String ip = "192.168.137.1";
 
     private String json;
 
@@ -24,7 +26,7 @@ public class AsyncTask extends android.os.AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         try {
             //TODO: remove Thread.sleep()
-            Thread.sleep(5000);
+//            Thread.sleep(5000);
             json = getHTML(params[0]);
         } catch (Exception e) {
             e.printStackTrace();
