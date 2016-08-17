@@ -12,12 +12,12 @@ import android.widget.ListView;
 import com.rac.simoneunddaniel.mensa.R;
 import com.rac.simoneunddaniel.mensa.RestServices.AsyncResponse;
 import com.rac.simoneunddaniel.mensa.RestServices.AsyncTask;
-import com.rac.simoneunddaniel.mensa.RoadRunner.RoadRunner;
+//import com.rac.simoneunddaniel.mensa.RoadRunner.RoadRunner;
 
 public class MenueSelectionActivity extends AppCompatActivity {
 
     private ListView listView;
-    private com.github.glomadrian.roadrunner.IndeterminateRoadRunner spinner;
+//    private com.github.glomadrian.roadrunner.IndeterminateRoadRunner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MenueSelectionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //Setup spinner
-        spinner = (com.github.glomadrian.roadrunner.IndeterminateRoadRunner) findViewById(R.id.spinner);
+//        spinner = (com.github.glomadrian.roadrunner.IndeterminateRoadRunner) findViewById(R.id.spinner);
 
         listView = (ListView) findViewById(R.id.listViewMenueSelection);
 
@@ -46,7 +46,7 @@ public class MenueSelectionActivity extends AppCompatActivity {
 
                 String[] values = helper.getMenuesOfTheDayAsStringArray(output);
                 listView.setAdapter(new MenueListAdapter(getApplication(), values));
-                spinner.setVisibility(View.INVISIBLE);
+//                spinner.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -61,7 +61,6 @@ public class MenueSelectionActivity extends AppCompatActivity {
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
 
-                startActivity(new Intent(getApplicationContext(), RoadRunner.class));
             }
         });
 
