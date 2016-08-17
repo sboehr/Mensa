@@ -1,4 +1,4 @@
-package com.rac.simoneunddaniel.mensa.StartActivity;
+package com.rac.simoneunddaniel.mensa.StartScreen;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
