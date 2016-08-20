@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.rac.simoneunddaniel.mensa.StartActivity.MainActivity">
+    tools:context="com.rac.simoneunddaniel.mensa.StartScreen.MainActivity">
 
 
     <!--&lt;!&ndash; activity_screen_slide.xml &ndash;&gt;-->
@@ -13,7 +13,7 @@
         <!--android:id="@+id/pager"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent" />-->
-    <com.rac.simoneunddaniel.mensa.StartActivity.CustomViewPager
+    <com.rac.simoneunddaniel.mensa.StartScreen.CustomViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

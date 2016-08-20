@@ -33,7 +33,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile group: 'joda-time', name: 'joda-time', version: '2.3'
-    //compile 'com.github.glomadrian:roadrunner:1.0@aar'
+    compile 'com.github.glomadrian:roadrunner:1.0@aar'
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
 
 }
