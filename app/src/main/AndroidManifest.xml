@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".WeekSelection.DayOfWeekSelectionActivity" />
         <activity android:name=".MenueSelection.MenueSelectionActivity" />
+        <activity android:name=".ReviewSelection.ReviewSelectionActivity" />
     </application>
 
 </manifest>

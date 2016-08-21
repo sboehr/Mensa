@@ -55,7 +55,7 @@ public class MenueListAdapter extends BaseAdapter {
             String menueFragments[] = data[position].split("%&%");
 
             TextView header = (TextView) vi.findViewById(R.id.header);
-            header.setText(menueFragments[0]);
+            header.setText(menueFragments[0].split("%§%")[1]);
             header.setGravity(Gravity.CENTER_HORIZONTAL);
             TextView datatv = (TextView) vi.findViewById(R.id.data);
             datatv.setText(menueFragments[1]);

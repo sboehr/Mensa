@@ -1,5 +1,6 @@
 package com.rac.simoneunddaniel.mensa.MenueSelection;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,11 +12,13 @@ import com.github.glomadrian.roadrunner.IndeterminateRoadRunner;
 import com.rac.simoneunddaniel.mensa.R;
 import com.rac.simoneunddaniel.mensa.RestServices.AsyncResponse;
 import com.rac.simoneunddaniel.mensa.RestServices.AsyncTask;
+import com.rac.simoneunddaniel.mensa.ReviewSelection.ReviewSelectionActivity;
 
 public class MenueSelectionActivity extends AppCompatActivity {
 
     private ListView listView;
     private IndeterminateRoadRunner spinner;
+    private String[] values, e_ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,14 @@ public class MenueSelectionActivity extends AppCompatActivity {
             public void processFinish(String output) {
                 MenueHelper helper = new MenueHelper();
 
-                String[] values = helper.getMenuesOfTheDayAsStringArray(output);
+                values = helper.getMenuesOfTheDayAsStringArray(output);
+                e_ids = new String[values.length];
+                for (int i = 0; i < values.length; i++) {
+                    e_ids[i] = values[i].split("%§%")[0];
+                }
                 listView.setAdapter(new MenueListAdapter(getApplication(), values));
                 spinner.setVisibility(View.INVISIBLE);
+
             }
         });
 
@@ -58,6 +66,10 @@ public class MenueSelectionActivity extends AppCompatActivity {
                                     int position, long id) {
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
+                Intent intent = new Intent(getApplicationContext(), ReviewSelectionActivity.class);
+                intent.putExtra("e_ID", e_ids[position]);
+                intent.putExtra("menue", values[position]);
+                startActivity(intent);
 
             }
         });

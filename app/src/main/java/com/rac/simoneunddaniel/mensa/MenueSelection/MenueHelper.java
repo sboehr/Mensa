@@ -19,7 +19,8 @@ public class MenueHelper {
                 JSONObject menue = menuesOfTheDay.getJSONObject(i);
                 String title = menue.getString("title");
                 String description = menue.getString("description");
-                menuesAsStringArray[i] = title + ":%&%" + description;
+                int e_id = menue.getInt("e_ID");
+                menuesAsStringArray[i] = e_id + "%§%" +  title + ":%&%" + description;
             }
         } catch (JSONException e) {
             e.printStackTrace();

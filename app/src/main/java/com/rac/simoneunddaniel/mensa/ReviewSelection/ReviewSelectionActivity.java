@@ -1,11 +1,13 @@
 package com.rac.simoneunddaniel.mensa.ReviewSelection;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.rac.simoneunddaniel.mensa.R;
 
@@ -26,6 +28,14 @@ public class ReviewSelectionActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        TextView tv = (TextView) findViewById(R.id.tvReview);
+
+        String e_id = getIntent().getStringExtra("e_ID");
+        String menue = getIntent().getStringExtra("menue");
+        tv.setText(e_id + "\n" + menue);
+
+
     }
 
 }
