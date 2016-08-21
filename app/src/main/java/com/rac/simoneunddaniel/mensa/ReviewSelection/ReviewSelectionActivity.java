@@ -10,8 +10,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rac.simoneunddaniel.mensa.R;
+import com.rac.simoneunddaniel.mensa.RestServices.AsyncResponse;
+import com.rac.simoneunddaniel.mensa.RestServices.AsyncTask;
 
 public class ReviewSelectionActivity extends AppCompatActivity {
+
+    private TextView tv;
+    private String e_id, menue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +34,22 @@ public class ReviewSelectionActivity extends AppCompatActivity {
             }
         });
 
-        TextView tv = (TextView) findViewById(R.id.tvReview);
+        tv = (TextView) findViewById(R.id.tvReview);
 
-        String e_id = getIntent().getStringExtra("e_ID");
-        String menue = getIntent().getStringExtra("menue");
+        e_id = getIntent().getStringExtra("e_ID");
+        menue = getIntent().getStringExtra("menue");
         tv.setText(e_id + "\n" + menue);
+
+        AsyncTask asyncTask = new AsyncTask(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+               tv.setText(e_id + "\n" + menue + "\n\n" + output);
+            }
+        });
+
+        String url = "http://" + AsyncTask.ip + ":8080/mensa-platform-rest/resources/ReviewService/getReviews?id=" + e_id;
+
+        asyncTask.execute(url);
 
 
     }
